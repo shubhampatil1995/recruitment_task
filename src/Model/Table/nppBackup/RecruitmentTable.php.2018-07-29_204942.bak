@@ -1,0 +1,88 @@
+<?php
+	namespace App\Model\Table;
+
+	use Cake\ORM\Table;
+	use Cake\Validation\Validator;
+
+	class RecruitmentTable extends Table
+	{
+		public function initialize(array $config)
+		{
+			$this->addBehavior('Timestamp');
+		}
+
+		public function validationDefault(Validator $validator)
+		{
+			/*$validator
+				->notEmpty('job_post')
+				->requirePresence('job_post')
+				->notEmpty('req_exp')
+				->requirePresence('req_exp')
+				->notEmpty('emp_type')
+				->requirePresence('emp_type')
+				->notEmpty('ctc_pa')
+				->requirePresence('ctc_pa')
+				->notEmpty('job_desc')
+				->requirePresence('job_desc')
+				->notEmpty('skills_req')
+				->requirePresence('skills_req')
+				->notEmpty('qualification')
+				->requirePresence('qualification');*/
+				
+				$validator = array(
+					'job_post' => array(
+						'required' => array(
+							'rule' => array('notEmpty'),
+							'message' => 'Job Post Cant Be Blank',
+							//'allowEmpty' => false,
+							//'required' => false,
+							//'last' => false, // Stop validation after this rule
+							//'on' => 'create', // Limit validation to 'create' or 'update' operations
+						),
+					),
+					'req_exp' => array(
+						'required' => array(
+							'rule' => array('notEmpty'),
+							'message' => 'Required Experience Cant Be Blank',
+						),
+					),
+					'emp_type' => array(
+						'required' => array(
+							'rule' => array('notEmpty'),
+							'message' => 'Please select Employment Type',
+						),
+					),
+					'ctc_pa' => array(
+						'required' => array(
+							'rule' => array('notEmpty'),
+							'message' => 'Please Provide CTC',
+						),
+					),
+					
+					'job_desc' => array(
+						'required' => array(
+							'rule' => array('notEmpty'),
+							'message' => 'Please Add Job Description',
+						),
+					),
+					
+					'skills_req' => array(
+						'required' => array(
+							'rule' => array('notEmpty'),
+							'message' => 'Please Add Required Skills',
+						),
+					),
+					'qualification' => array(
+						'required' => array(
+							'rule' => array('notEmpty'),
+							'message' => 'Please Select Required Educational Qualification',
+						),
+					),
+				);
+
+				
+			return $validator;
+		}
+	}
+
+?>

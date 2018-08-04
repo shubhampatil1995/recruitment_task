@@ -1,0 +1,34 @@
+<?php
+	namespace App\Model\Table;
+
+	use Cake\ORM\Table;
+	use Cake\Validation\Validator;
+
+	class RecruitmentTable extends Table
+	{
+		public function initialize(array $config)
+		{
+			$this->addBehavior('Timestamp');
+		}
+
+		public function validationDefault(Validator $validator)
+		{
+			$validator
+				->notEmpty('job_post')
+				->requirePresence('job_post')
+				->notEmpty('req_exp')
+				->requirePresence('req_exp');
+				->notEmpty('req_exp')
+				->requirePresence('req_exp');
+				->notEmpty('req_exp')
+				->requirePresence('req_exp');
+				->notEmpty('req_exp')
+				->requirePresence('req_exp');
+				->notEmpty('req_exp')
+				->requirePresence('req_exp');
+				
+			return $validator;
+		}
+	}
+
+?>

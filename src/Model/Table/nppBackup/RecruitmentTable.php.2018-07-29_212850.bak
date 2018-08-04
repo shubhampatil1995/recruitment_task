@@ -1,0 +1,38 @@
+<?php
+	namespace App\Model\Table;
+
+	use Cake\ORM\Table;
+	use Cake\Validation\Validator;
+
+	class RecruitmentTable extends Table
+	{
+		public function initialize(array $config)
+		{
+			$this->addBehavior('Timestamp');
+		}
+
+		public function validationDefault(Validator $validator)
+		{
+			echo "hello";
+			exit;
+			$validator
+				->notEmpty('job_post', 'Job Post Cant Be Blank')
+				->requirePresence('job_post')
+				->notEmpty('req_exp', 'Required Experience Cant Be Blank')
+				->requirePresence('req_exp')
+				->notEmpty('emp_type', 'Please select Employment Type')
+				->requirePresence('emp_type')
+				->notEmpty('ctc_pa', 'Please Provide CTC')
+				->requirePresence('ctc_pa')
+				->notEmpty('job_desc', 'Please Add Job Description')
+				->requirePresence('job_desc')
+				->notEmpty('skills_req','Please Add Required Skills')
+				->requirePresence('skills_req')
+				->notEmpty('qualification', 'Please Select Required Educational Qualification')
+				->requirePresence('qualification');
+				
+			return $validator;
+		}
+	}
+
+?>
